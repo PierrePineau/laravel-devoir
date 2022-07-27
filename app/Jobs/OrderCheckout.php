@@ -4,10 +4,8 @@ namespace App\Jobs;
 
 use App\Models\User;
 use App\Models\Order;
-use App\Models\Report;
-use App\Mail\ReportItems;
-use App\Events\SendReportFinish;
-use App\Mail\ReportOrderCheckout;
+// use App\Events\SendReportFinish;
+use App\Mail\SendOrderCheckout;
 use Illuminate\Bus\Queueable;
 use Illuminate\Contracts\Queue\ShouldBeUnique;
 use Illuminate\Contracts\Queue\ShouldQueue;
@@ -32,7 +30,7 @@ class OrderCheckout implements ShouldQueue
     
     public function handle()
     {
-        Mail::to($this->user)->send(new ReportOrderCheckout());
+        Mail::to($this->user)->send(new SendOrderCheckout($this->user, $this->order));
         // Mail::to($user)->send('test');
         // SendReportFinish::dispatch($this->report);
     }

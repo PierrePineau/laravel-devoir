@@ -62,3 +62,6 @@ Route::post('/orders/add/{item}', [\App\Http\Controllers\OrderController::class,
 
 Route::get('/orders/{order}/checkout', [\App\Http\Controllers\OrderController::class, 'checkout'])
     ->name('orders.checkout');
+
+Route::get('/mails/checkout/{order}', [\App\Http\Controllers\OrderController::class, 'demoMail'])
+    ->name('orders.demoMail');
