@@ -26,6 +26,8 @@ class SendOrderCheckout extends Mailable
 
     public function build()
     {
-        return $this->view('mails.OrderCheckout', ['user' => $this->user, 'order' => $this->order]);
+        return $this
+            ->subject("Votre commande a été validé")
+            ->view('mails.OrderCheckout', ['user' => $this->user, 'order' => $this->order]);
     }
 }
