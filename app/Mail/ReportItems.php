@@ -17,7 +17,7 @@ class ReportItems extends Mailable
     public function __construct(Report $report)
     {
         $this->report = $report;
-    }
+    }   
 
     public function build()
     {

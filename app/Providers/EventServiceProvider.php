@@ -4,11 +4,13 @@ namespace App\Providers;
 
 use App\Events\AddToCart;
 use App\Events\NewCreateItem;
+use App\Events\OrderCheckout;
 use App\Events\SendReportFinish;
 use App\Listeners\DeleteReport;
 use App\Listeners\LogCreateNewItem;
 use App\Listeners\LogNewAddItemToCart;
 use App\Listeners\LogStockAlertItem;
+use App\Listeners\SendOrderCheckout;
 use App\Listeners\UpdateReportStatus;
 use Illuminate\Auth\Events\Registered;
 use Illuminate\Auth\Listeners\SendEmailVerificationNotification;

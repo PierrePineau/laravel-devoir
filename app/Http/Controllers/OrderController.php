@@ -3,11 +3,14 @@
 namespace App\Http\Controllers;
 
 use App\Events\AddToCart;
+use App\Jobs\OrderCheckout;
 use App\Models\Item;
 use App\Models\Order;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Str;
+use Illuminate\Support\Facades\Auth;
+
 
 class OrderController extends Controller
 {
@@ -45,6 +48,8 @@ class OrderController extends Controller
     public function checkout(Order $order, Request $request)
     {
         $order->update(['status' => 'paid']);
+
+        OrderCheckout::dispatch(Auth::user(), $order);
 
         $request->session()->flash('alert', ['type' => 'info', 'message' => "La commande $order->number a été réglé."]);
 
