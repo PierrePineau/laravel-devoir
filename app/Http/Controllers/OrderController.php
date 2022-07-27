@@ -58,8 +58,6 @@ class OrderController extends Controller
 
     public function demoMail(Order $order)
     {
-        // $order = Order::findOrFail($id);
-
         return view('mails.OrderCheckout', ['user'=> Auth::user(), 'order' => $order]);
     }
 }
